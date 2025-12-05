@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Dashboard</h1>
+
+<div class="row mb-4">
+  <div class="col-md-4"><div class="card p-3 bg-light">Total Sales: {{ total_sales }}</div></div>
+  <div class="col-md-4"><div class="card p-3 bg-light">Total Purchase Expenses: {{ total_purchase_expense }}</div></div>
+  <div class="col-md-4"><div class="card p-3 bg-light">Overall Profit: {{ overall_profit }}</div></div>
+</div>
+
+<h3>Top 10 Sold Products</h3>
+<table class="table table-striped">
+  <thead>
+    <tr><th>Product</th><th>Total Sold</th></tr>
+  </thead>
+  <tbody>
+    {% for p in top_products %}
+    <tr>
+      <td>{{ p.name }} ({{ p.size }} {{ p.colour }})</td>
+      <td>{{ p.total_sold }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="2">No sales yet</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<p>Number of Sales Transactions: {{ sales_count }}</p>
+<p>Number of Purchase Transactions: {{ purchase_count }}</p>
+{% endblock %}

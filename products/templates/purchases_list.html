@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Purchase Transactions{% endblock %}
+
+{% block content %}
+<h1>Purchase Transactions</h1>
+
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} mt-2">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price Paid</th>
+      <th>Supplier</th>
+      <th>Order Date</th>
+      <th>Income Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for purchase in purchases %}
+    <tr>
+      <td>{{ purchase.id }}</td>
+      <td>{{ purchase.product.name }} ({{ purchase.product.size }} {{ purchase.product.colour }})</td>
+      <td>{{ purchase.quantity }}</td>
+      <td>{{ purchase.price_price }}</td>
+      <td>{{ purchase.supplier_name }}</td>
+      <td>{{ purchase.order_date }}</td>
+      <td>{{ purchase.income_date }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7">No purchases yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

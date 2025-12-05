@@ -1,0 +1,86 @@
+body {
+    background-color: #f7f9f9; 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.navbar {
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #ffffff;
+}
+
+.nav-link {
+    color: #2d2d2d !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #28a745 !important; 
+}
+
+.navbar-brand {
+    color: #28a745 !important;
+    font-weight: 700;
+}
+
+.table {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.table th {
+    background-color: #e8f5e9; 
+    color: #2d2d2d;
+    font-weight: 600;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.card {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease-in-out;
+    background-color: #ffffff; 
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+}
+
+.btn-primary {
+    background-color: #28a745; 
+    border: none;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background-color: #1e7e34; 
+}
+
+.btn-secondary {
+    background-color: #f0f0f0; 
+    color: #2d2d2d;
+    border-radius: 8px;
+}
+
+.btn-secondary:hover {
+    background-color: #d9d9d9;
+}
+
+input, select {
+    border-radius: 8px !important;
+    border: 1px solid #ccc;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600;
+    color: #2d2d2d;
+}
+
+.table tbody tr:hover {
+    background-color: #e8f5e9; 
+}

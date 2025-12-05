@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h1>Products list</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Colour</th>
+      <th>Quantity</th>
+      <th>Alert</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in products %}
+    <tr class="{% if p.quantity <= p.alert_number %}table-warning{% endif %}">
+      <td>{{ p.name }}</td>
+      <td>{{ p.size }}</td>
+      <td>{{ p.colour }}</td>
+      <td>{{ p.quantity }}</td>
+      <td>{{ p.alert_number }}</td>
+      <td>{{ p.price_sale }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="6">No products found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

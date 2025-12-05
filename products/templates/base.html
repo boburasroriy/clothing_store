@@ -1,0 +1,54 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Clothing Store{% endblock %}</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'products/css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="{% url 'products:product_list' %}">Clothing Store</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav me-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'products:product_list' %}">Products</a></li>
+        {% if user.employee.role in "manager admin" %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'products:dashboard' %}">Dashboard</a></li>
+        {% endif %}
+        {% if user.employee.role in "cashier manager admin" %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'products:create_sale' %}">New Sale</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'products:sales_list' %}">Sales History</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'products:create_purchase' %}">New Purchase</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'products:purchases_list' %}">Purchase History</a></li>
+
+        {% endif %}
+        {% endif %}
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        {% if user.is_authenticated %}
+        <li class="nav-item"><span class="nav-link">{{ user.username }} ({{ user.employee.role }})</span></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container py-5">
+  {% block content %}{% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'products/js/main.js' %}"></script>
+</body>
+</html>

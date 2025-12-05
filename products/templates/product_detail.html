@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Product Detail{% endblock %}
+
+{% block content %}
+<h1>{{ product.name }} ({{ product.size }} {{ product.colour }})</h1>
+<ul class="list-group">
+  <li class="list-group-item">Quantity: {{ product.quantity }}</li>
+  <li class="list-group-item">Alert number: {{ product.alert_number }}</li>
+  <li class="list-group-item">Measurements: {{ product.measurements }}</li>
+  <li class="list-group-item">Cost Price: {{ product.price_cost }}</li>
+  <li class="list-group-item">Sale Price: {{ product.price_sale }}</li>
+  <li class="list-group-item">Comment: {{ product.comment }}</li>
+</ul>
+<a href="{% url 'products:product_list' %}" class="btn btn-secondary mt-3">Back to Products</a>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Purchase{% endblock %}
+
+{% block content %}
+<h1>Create Purchase</h1>
+
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} mt-2">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+
+  <div class="mb-3">
+    <label for="product" class="form-label">Product</label>
+    <select name="product_id" id="product" class="form-select" required>
+      {% for p in products %}
+        <option value="{{ p.id }}">{{ p.name }} ({{ p.size }} {{ p.colour }})</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantity</label>
+    <input type="number" name="quantity" id="quantity" class="form-control" min="1" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="price_price" class="form-label">Price Paid</label>
+    <input type="number" step="0.01" name="price_price" id="price_price" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="supplier_name" class="form-label">Supplier Name</label>
+    <input type="text" name="supplier_name" id="supplier_name" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Add Purchase</button>
+  <a href="{% url 'products:purchases_list' %}" class="btn btn-secondary">Purchases History</a>
+</form>
+{% endblock %}
